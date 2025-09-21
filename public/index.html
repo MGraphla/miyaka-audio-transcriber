@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miyaka twi Audio Transcriber</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Miyaka twi Audio Transcriber</h1>
+        <p>Upload an audio file and Miyaka and her cat will transcribe it</p>
+        
+        <div class="upload-container">
+            <input type="file" id="audioFile" accept="audio/*" />
+            <button id="transcribeBtn">Transcribe</button>
+        </div>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <h2>Transcription Result:</h2>
+            <div class="language-info" id="languageInfo" style="display: none;">
+                <span class="language-badge" id="languageBadge"></span>
+            </div>
+            
+            <div class="transcription-content">
+                <!-- Original transcription -->
+                <div class="transcription-section">
+                    <h3 id="originalTitle">Original Text</h3>
+                    <div class="transcription original" id="transcription"></div>
+                    <button class="copy-btn" id="copyOriginalBtn" onclick="copyToClipboard('transcription')">
+                        📋 Copy Original Text
+                    </button>
+                </div>
+                
+                <!-- English translation (only shown if needed) -->
+                <div class="translation-section" id="translationSection" style="display: none;">
+                    <h3>English Translation</h3>
+                    <div class="transcription translation" id="translation"></div>
+                    <button class="copy-btn" id="copyTranslationBtn" onclick="copyToClipboard('translation')">
+                        📋 Copy Translation
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Transcribing audio and detecting language...</p>
+        </div>
+
+        <div class="error" id="error" style="display: none;">
+            <p>An error occurred. Please try again.</p>
+            <p id="errorDetails"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

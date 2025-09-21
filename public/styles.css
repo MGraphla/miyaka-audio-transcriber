@@ -1,0 +1,255 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 95%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* Upload container */
+.upload-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 0 auto 1.5rem;
+    padding: 1rem;
+    border: 2px dashed #3498db;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #2980b9;
+    background-color: #f8f9fa;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Result container */
+.result-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: none;
+}
+
+.result-container h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Language info */
+.language-info {
+    margin-bottom: 1.5rem;
+}
+
+.language-badge {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Transcription content layout */
+.transcription-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+
+.transcription-section,
+.translation-section {
+    flex: 1;
+    min-width: 0; /* Allow flex items to shrink */
+}
+
+.transcription-section h3,
+.translation-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+}
+
+.transcription {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    line-height: 1.8;
+    border-left: 4px solid #3498db;
+    min-height: 200px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.transcription.translation {
+    background: #e8f5e8;
+    border-left: 4px solid #27ae60;
+}
+
+/* Copy buttons */
+.copy-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+}
+
+.copy-btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn.copied {
+    background: #27ae60;
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .transcription-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .result-container {
+        padding: 1rem;
+    }
+}
+
+/* Loading spinner */
+.loading {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error {
+    background-color: #fde8e8;
+    color: #c53030;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    display: none;
+}
+
+.error p {
+    margin: 0;
+}
+
+#errorDetails {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #9b2c2c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .upload-container, .result-container {
+        padding: 1.5rem;
+    }
+}
